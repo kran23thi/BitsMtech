@@ -10,8 +10,8 @@ class queue1
     public:int q1[MAX];
     queue1()
     {
-        front=-1;
-        rear=0;
+        front=0;
+        rear=-1;
     }
     int insert();
     int del();
@@ -29,23 +29,23 @@ int queue1::insert()
     {
         cout<<"enter Item value:";
         cin>>val;
-        front++;
-        q1[front]=val;
+        rear++;
+        q1[rear]=val;
     }
     return front;
 }
 
 int queue1::del()
 {
- if(front<rear)
+ if(front<=rear)
  {
      cout<<"queue is empty";
  }
  else
  {
      cout<<"deleting item:";
-     cout<<q1[rear];
-     rear++;
+     cout<<q1[front];
+     front++;
  }
 }
 
