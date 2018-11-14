@@ -1,0 +1,133 @@
+#include<iostream>
+#include<stdio.h>
+#define MAX 4
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+};
+
+
+class LinkList
+{
+    node *head, *tail;
+public:
+    LinkList()
+    {
+        head=NULL;
+        tail=NULL;
+    }
+    void AddNode(int val);
+    void DelNode();
+    void display();
+    
+
+};
+void LinkList::AddNode(int val)
+{
+   node *tmp=new node;
+   tmp->data=val;
+   tmp->next=NULL;
+   if(head==NULL)
+   {
+       head=tmp;
+       tail=tmp;
+   }
+   else
+   {
+       tail->next=tmp;
+       tail=tail->next;
+   }
+}
+
+void LinkList::DelNode()
+{
+    if(head==NULL)
+    {
+        cout<<"Error: Empty List";
+    }
+
+    else
+    {
+     if(head->next==NULL)
+    {
+    head=NULL;
+    }
+    else
+    {
+        node *tmp1,*tailprev;
+        tmp1=head;
+        tailprev=head;
+        while(tmp1->next!=NULL)
+        {
+            tailprev=tmp1;
+            tmp1=tmp1->next;
+        }
+        tailprev->next=NULL;
+    }
+    }
+}
+
+void LinkList::display()
+{
+        if(head==NULL)
+    {
+        cout<<"Error: Empty List";
+    }
+    else
+    {
+    node *tmp1=new node;
+     tmp1=head;
+     cout<< "LinkedList display:";
+     while(tmp1->next!=NULL)
+     {
+         cout<<tmp1->data;
+         cout<<"--->";
+         tmp1=tmp1->next;
+     }
+        cout<<tmp1->data;
+    }
+ 
+}
+
+int main()
+{
+int c,e;
+struct LinkList ll; 
+cout <<"Hello World";
+cout << "Enter choice 1.Insert 2.Delete 3.display 4.Close 5.Size";
+cin>>c;
+while(c!=4)
+{
+switch(c)
+{
+    case 1: 
+    cout<<"Enter Value:";
+    cin>>e;
+    ll.AddNode(e);
+    cout<<"Enter choice 1.Insert 2.Delete 3.display 4.Close 5.Size";
+    cin>>c;
+    break;
+    case 2: 
+ll.DelNode();
+    cout<<"Enter choice 1.Insert 2.Delete 3.display 4.Close 5.Size";
+    cin>>c;
+    break;
+    case 3: 
+    ll.display ();
+    cout<<"Enter choice 1.Insert 2.Delete 3.display 4.Close 5.Size";
+    cin>>c;
+    break;
+    case 4: 
+    break;
+    case 5:
+    cout<<" size is:";
+    cout<<"No size function";
+    cout<<"Enter choice 1.Insert 2.Delete 3.display 4.Close 5.Size";
+    cin>>c;
+    break;
+}
+}
+    return 0;
+}
