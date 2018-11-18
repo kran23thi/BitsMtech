@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include<iostream>
+using namespace std;
+#define MAX 10
+
+class stack1
+{
+    public:int top;
+    public:char st[MAX];
+    stack1()
+    {
+        top=-1;
+    }
+    int push(char e);
+    char pop();
+    void display();
+};
+
+int stack1::push(char e)
+{
+  if (top>MAX-1)
+    {
+     cout <<"stack overflow";
+    }
+  else
+    {
+      top++;
+      st[top] = e;
+}
+return top;
+}
+
+char stack1::pop()
+{
+    char val;
+    if(top<0)
+    {
+        cout<<"Stack under flow";
+    }
+    else
+    {
+        val=st[top];
+        cout<<st[top];
+        top=top-1;
+        
+        return val;
+    }
+}
+
+void stack1::display()
+{
+        if(top<0)
+    {
+        cout<<"Stack under flow";
+    }
+    else
+    {
+        for(int j=0;j<=top;j++)
+        {
+            cout<<st[j];
+            cout<<",";
+        }
+    }
+}
+
+int main()
+{
+    int c,len,counter=0;
+    string str,polyn="yes";
+    struct stack1 s; 
+cout << "Hello World";
+cout<<"Enter string to check:";
+cin>>str;
+len=str.length();
+cout<<"string length:";
+cout<<len;
+for(int k=0;k<len;k++)
+{
+    //cout<<str[k];
+    s.top=s.push(str[k]);
+    
+}
+s.display();
+cout<<s.top;
+for(int k=0;k<len;k++)
+{
+   if (str[k]!=s.pop())
+   {
+       //cout<<s.pop();
+       polyn="no";
+       counter=counter+1;
+   }
+}
+cout<<polyn;
+cout<<"counter:";
+cout<<counter;
+    cout<<"Enter choice 1. push 2. Pop 3.display 4.Close";
+    cin>>c;
+while(c<=3)
+{
+switch(c)
+{
+    case 1: 
+    s.push (str[c]);
+    cout<<"Enter choice 1. push 2. Pop 3.display 4.Close";
+    cin>>c;
+    break;
+    case 2: 
+    s.pop ();
+    cout<<"Enter choice 1. push 2. Pop 3.display 4.Close";
+    cin>>c;
+    break;
+    case 3: 
+    s.display ();
+    cout<<"Enter choice 1. push 2. Pop 3.display 4.Close";
+    cin>>c;
+    break;
+    case 4: 
+    break;
+}
+}
+    return 0;
+}
